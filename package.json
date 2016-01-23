@@ -1,0 +1,22 @@
+{
+    "name": "macpaw-test",
+    "version": "0.0.1",
+    "description": "Test task for Full-Stack Developer",
+    "scripts": {
+        "start": "./app/server.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Roman Dutchak",
+    "license": "NONE",
+    "dependencies": {
+        "cookie-parser": "^1.4.1",
+        "csurf": "^1.8.3",
+        "express": "^4.13.4",
+        "express-stormpath": "^2.3.6",
+        "forms": "^1.1.4",
+        "jade": "^1.11.0",
+        "masonry-layout": "^4.0.0",
+        "mysql": "^2.10.2",
+        "xtend": "^4.0.1"
+    }
+}

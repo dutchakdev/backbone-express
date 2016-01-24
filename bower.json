@@ -1,0 +1,30 @@
+{
+  "name": "macpawtt",
+  "description": "Client for Test tesk",
+  "main": "",
+  "authors": [
+    "Roman Dutchak"
+  ],
+  "license": "NONE",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/vendors/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "requirejs": "latest",
+    "jquery": "~2.2.0",
+    "imagesloaded": "~4.1.0",
+    "justifiedGallery": "justified-gallery#~3.6.1",
+    "bootstrap": "~3.3.6",
+    "backbone-amd": "latest",
+    "underscore-amd": "latest",
+    "text": "requirejs-text#~2.0.14"
+  }
+}

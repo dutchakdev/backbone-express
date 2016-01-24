@@ -7,8 +7,10 @@ config.express = {
 };
 
 config.mysql = {
-	port: process.env.MYSQL_PORT || 3306,
-	host: process.env.MYSQL_HOST || "localhost"
-	user: process.env.MYSQL_USER || "test",
-	password: process.env.MYSQL_PASSWORD || "test"
-};
+	"development": {
+		"username": "root",
+		"password": "test",
+		"database": "macpawgram",
+		"host": "127.0.0.1"
+	}
+}

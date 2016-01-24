@@ -4,65 +4,57 @@ define([
 	'backbone',
 	'masonry',
 	'imagesloaded',
-	'views/image',
+	'views/imageList',
 	'collections/images',
-	'collections/categories'
-], function($, _, Backbone, Masonry, imagesLoaded, ImageView, Images, Categories) {
+	'common'
+], function($, _, Backbone, Masonry, imagesLoaded, ImageListView, Images, Common) {
 	'use strict';
 
 	var App = Backbone.View.extend({
-		el: "#gallery",
-		events: {
-			'click .image': 'animateLike'
-		},
+		el: Common.GALLERY_SELECTOR,
+
 		initialize: function() {
+			var mainView = this;
+			// Делаем запрос к api, получаем список картинок
+			Images.fetch();
+			Images.on('sync', function () {
+				mainView.initGrid();
+				mainView.render();
+			})
+		},
 
-
-			imagesLoaded($('.grid'), function() {
-				var $grid = new Masonry('.grid', {
-					itemSelector: '.grid-item',
-					percentPosition: true,
-					columnWidth: 0
+		initGrid: function() {
+			$(this.$el).on(Common.EVENT_AFTER_RENDER, function(){
+				imagesLoaded($('.gallery__imageList__image'), function() {
+					var $grid = new Masonry('.gallery__imageList', {
+						itemSelector: '.gallery__imageList__image',
+						percentPosition: true,
+						columnWidth: 0
+					});
 				});
 			});
 		},
+
+		/**
+		*	Master-ренденринг.
+		**/
 		render: function() {
-
+			this.$el.trigger(Common.EVENT_BEFORE_RENDER);
+			this.renderImageList(Images);
+			this.$el.trigger(Common.EVENT_AFTER_RENDER);
 		},
 
-		renderImages: function(item) {
-			var imageView = new ImageView({
-				model: item
+		/**
+		*	Рендеринг списка изображений
+		**/
+		renderImageList: function(Images) {
+			var imageListView = new ImageListView({
+				model: Images,
 			});
-			this.$el.append(imageView.render().el);
+			// $el передаем в render, нужен для отслежки событий в основном контейнере
+			this.$el.append(imageListView.render().el);
 		},
 
-		animateLike: function (event) {
-			var $target = $(event.currentTarget);
-			var rand = Math.floor((Math.random()*100)+1);
-			var flows = ["flowOne", "flowTwo", "flowThree"];
-			var colors = ["yellow", "orange", "red", "green", "blue", "purple"];
-			var timing = (Math.random()*(1.3-1.0)+1.0).toFixed(1);
-			var heartIcon = '<span class="glyphicon glyphicon-heart"></span>';
-			var likeWrapper = [
-				'<div ',
-				'class="likebox part-'+rand+' '+colors[Math.floor((Math.random()*6))]+'" ',
-				'style="font-size:'+Math.floor(Math.random()*(30-22)+22)+'px;"',
-				'>',
-				heartIcon,
-				'</div>'
-			]
-			$(likeWrapper.join(''))
-				.appendTo($target)
-				.css({
-					animation: ""+flows[Math.floor((Math.random()*3))]+" "+timing+"s linear"
-				});
-
-			$('.part-'+rand, $target).show();
-			setTimeout(function(){
-				$('.part-'+rand, $target).remove();
-			}, timing*1000-100);
-		}
 	});
 
 	return App;

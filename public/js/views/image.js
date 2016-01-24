@@ -3,19 +3,18 @@ define([
 	'underscore',
 	'backbone',
 	'text!templates/images.html',
-	'collections/images',
-], function($, _, Backbone, ImagesTemplate, Images) {
+], function($, _, Backbone, ImageListTemplate) {
 	'use strict';
 
-	var ImageView = Backbone.View.extend({
+	return Backbone.View.extend({
 		tagName: "div",
-		className: "image",
-		template: _.template(ImagesTemplate),
+		className: "gallery__imageList__image",
+		template: _.template(ImageListTemplate),
 
 		render: function () {
 			this.$el.html(this.template(this.model.toJSON()));
 			return this;
-		}
+		},
 	});
 
 });

@@ -9,11 +9,7 @@ define([
 
 	var ImagesCollection = Backbone.Collection.extend({
 		model: Images,
-		url: Common.API_GET_IMAGES,
-		parse: function(data) {
-			console.log(data);
-			return data;
-		}
+		url: Common.API_GET_IMAGES
 	});
 
 	return new ImagesCollection();

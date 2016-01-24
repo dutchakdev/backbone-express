@@ -18,7 +18,7 @@ header {
 	border-bottom: 1px solid #EAEAEA;
 }
 
-header .logo {
+header .header__logo {
 	padding-left: 10px;
 	padding-bottom: 10px;
 	color: blue;
@@ -32,7 +32,8 @@ header .logo {
 	box-shadow: inset 0 0 100px rgba(0,0,0,.5);
 }
 
-#gallery .filter {
+/* ---- .gallery ---- */
+#gallery .gallery__filters {
 	background-color: #fff;
 	padding: 5px;
 	margin: 10px auto 0 auto;
@@ -41,7 +42,7 @@ header .logo {
 	text-align: center;
 }
 
-#gallery .grid .image > .rating{
+#gallery .gallery__imageList__image > .gallery__imageList__image-rating{
 	position: absolute;
 	top: 12px;
 	left: 15px;
@@ -50,28 +51,34 @@ header .logo {
 	padding: 5px;
 }
 
-#gallery .grid .image > .info {
+#gallery .gallery__imageList__image > .gallery__imageList__image_info {
 	position: absolute;
 	bottom: 20px;
 	left: 20px;
 }
-#gallery .grid .image .like{
+
+#gallery .gallery__imageList__image .gallery__imageList__image_info-like{
 	color: #fff;
 	background-color: rgba(0,0,0,0.5);
 	padding: 5px;
 }
 
-#gallery .filter .dropdown-menu {
+#gallery .gallery__imageList__image a.gallery__imageList__image_info-like:hover {
+	text-decoration: none;
+	color: #FFACAE !important;
+}
+
+#gallery .gallery__filters .dropdown-menu {
 	text-align: left;
 }
 
-#gallery .filter .btn {
+#gallery .gallery__filters .btn {
 	padding: 0;
 	font-size: 12px;
 	text-align: left;
 }
 
-#gallery .filter .btn-default {
+#gallery .gallery__filters .btn-default {
 	color: #777;
 	background-color: #fff;
 	border-color: #fff;
@@ -80,23 +87,23 @@ header .logo {
 	padding-bottom: 0px;
 }
 
-#gallery .filter .btn .caret {
+#gallery .gallery__filters .btn .caret {
 	border-top-color: #000;
 }
 
-#gallery .filter .open > .btn-default {
+#gallery .gallery__filters .open > .btn-default {
 	border-bottom: 0px;
 }
 
-#gallery .filter .open > .btn-default {
+#gallery .gallery__filters .open > .btn-default {
 	background-color: #fff;
 	border: 0px;
 }
 
-#gallery .filter .open > .dropdown-toggle,
-#gallery .filter .open > .btn-default,
-#gallery .filter .btn.active,
-#gallery .filter .btn:active {
+#gallery .gallery__filters .open > .dropdown-toggle,
+#gallery .gallery__filters .open > .btn-default,
+#gallery .gallery__filters .btn.active,
+#gallery .gallery__filters .btn:active {
 	-webkit-box-shadow: 0 0 0 0;
 	box-shadow: 0 0 0 0;
 }
@@ -116,17 +123,17 @@ header .logo {
 
 /* ---- .grid-item ---- */
 
-.grid-sizer,
-.grid-item {
+#gallery .grid-sizer,
+#gallery .gallery__imageList__image {
 	width: 33.333%;
 }
 
-.grid-item {
+#gallery .gallery__imageList__image {
 	float: left;
 	padding: 5px;
 }
 
-.grid-item img {
+#gallery .gallery__imageList__image img {
 	display: block;
 	max-width: 100%;
 }

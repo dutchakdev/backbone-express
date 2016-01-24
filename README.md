@@ -12,3 +12,15 @@ $ ./bin/firstBuild.sh
 ```bash
 $ npm start
 ```
+
+##### Комментарии
+
+###### Rest
+
+Доступные методы:
+
+```
+GET 	/api/v1/images
+POST	/api/v1/likes
+GET 	/api/v1/categories
+```

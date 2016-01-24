@@ -2,7 +2,7 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
-	'models/images',
+	'models/image',
 	'common'
 ], function($, _, Backbone, Images, Common) {
 	'use strict';

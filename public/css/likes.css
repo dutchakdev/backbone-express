@@ -36,7 +36,7 @@
 	color: #35b1d1;
 }
 /* Animations */
-@keyframes flowOne {
+@keyframes one {
 	0% {
 		opacity: 0;
 		bottom: 0%;
@@ -61,7 +61,7 @@
 		left: 18%;
 	}
 }
-@keyframes flowTwo {
+@keyframes two {
 	0% {
 		opacity: 0;
 		bottom: 0%;
@@ -86,7 +86,7 @@
 		left: 0%;
 	}
 }
-@keyframes flowThree {
+@keyframes three {
 	0% {
 		opacity: 0;
 		bottom: 0%;

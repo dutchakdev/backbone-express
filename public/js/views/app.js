@@ -6,16 +6,17 @@ define([
 	'masonry',
 	'imagesloaded',
 	'views/imageList',
+	'views/image',
 	'views/filter',
 	'collections/images',
 	'collections/categories',
 	'common',
-], function($, _, Backbone, async, Masonry, imagesLoaded, ImageListView, FilterView, Images, Categories, Common) {
+], function($, _, Backbone, async, Masonry, imagesLoaded, ImageListView, ImageView, FilterView, Images, Categories, Common) {
 	'use strict';
 
 	var App = Backbone.View.extend({
 		el: Common.GALLERY_SELECTOR,
-
+		
 		initialize: function() {
 			// Делаем запрос к api, получаем список картинок
 			this.initGrid();
@@ -25,7 +26,7 @@ define([
 		initGrid: function() {
 			$(this.$el).on(Common.EVENT_AFTER_RENDER, function(){
 				imagesLoaded($('.gallery__imageList__image'), function() {
-					var $grid = new Masonry('.gallery__imageList', {
+					return new Masonry('.gallery__imageList', {
 						itemSelector: '.gallery__imageList__image',
 						percentPosition: true,
 						columnWidth: 0
@@ -48,6 +49,7 @@ define([
 					self.renderImageList(Images, cb);
 				},
 			], function(err){
+				if (err) throw err;
 				// end async
 				self.$el.trigger(Common.EVENT_AFTER_RENDER);
 			});
@@ -70,7 +72,7 @@ define([
 
 		renderFilters: function(Categories, callback) {
 			var self = this;
-			Categories.fetch()
+			Categories.fetch();
 			Categories.on('sync', function () {
 				var filterView = new FilterView({
 					model: Categories

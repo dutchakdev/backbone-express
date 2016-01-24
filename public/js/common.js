@@ -1,6 +1,6 @@
-'use strict';
-
+/*global define */
 define([], function () {
+	'use strict';
 	return {
 		ImagesFilter: '',
 		PLACEHOLDER: '/placeHolder.png',
@@ -9,6 +9,7 @@ define([], function () {
 		ESCAPE_KEY: 27,
 
 		API_GET_IMAGES: '/api/v1/images',
+		API_POST_LIKE: '/api/v1/likes',
 		API_GET_CATEGORIES: '/api/v1/categories',
 
 		/** --- Gallery --- **/

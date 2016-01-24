@@ -38,10 +38,16 @@ require([
 	'use strict';
 	// Так как из bootstrap нам нужен только dropdown
 	// то сразу тут его и вызовем.
-	$('.dropdown-toggle').dropdown()
+	/*jshint unused:false*/
+	$('.dropdown-toggle').dropdown();
 
-	// Инициализация роутера и
-	new Router()
+	// JSHnint fix no-new
+	(function(){
+		return new Router();
+	})();
 	Backbone.history.start();
-	new AppView;
+	// JSHnint fix no-new
+	(function(){
+		return new AppView();
+	})();
 });

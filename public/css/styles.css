@@ -42,28 +42,21 @@ header .header__logo {
 	text-align: center;
 }
 
-#gallery .gallery__imageList__image > .gallery__imageList__image-rating{
-	position: absolute;
-	top: 12px;
-	left: 15px;
-	color: #fff;
-	background-color: rgba(0,0,0,0.5);
-	padding: 5px;
-}
-
-#gallery .gallery__imageList__image > .gallery__imageList__image_info {
+#gallery .gallery__imageList__image .gallery__imageList__image__info {
 	position: absolute;
 	bottom: 20px;
 	left: 20px;
 }
-
-#gallery .gallery__imageList__image .gallery__imageList__image_info-like{
+#gallery .gallery__imageList__image .gallery__imageList__image__info-like,
+#gallery .gallery__imageList__image .gallery__imageList__image__info-rating{
 	color: #fff;
 	background-color: rgba(0,0,0,0.5);
+	margin-left: 5px;
 	padding: 5px;
+	float: left;
 }
 
-#gallery .gallery__imageList__image a.gallery__imageList__image_info-like:hover {
+#gallery .gallery__imageList__image a.gallery__imageList__image__info-like:hover {
 	text-decoration: none;
 	color: #FFACAE !important;
 }

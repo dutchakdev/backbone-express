@@ -1,9 +1,8 @@
 define([
-	'jquery',
 	'underscore',
 	'backbone',
 	'common'
-], function($, _, Backbone, Common) {
+], function(_, Backbone, Common) {
 	'use strict';
 
 	var Images = Backbone.Model.extend({
@@ -20,6 +19,9 @@ define([
 		},
 		imageUrl: function() {
 			this.set('imageUrl', Common.UPLOADS_PATH + this.get('file'));
+		},
+		like: function(data) {
+			console.log(this.save);
 		}
 	});
 

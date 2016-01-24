@@ -11,10 +11,14 @@ define([
 		className: "gallery__imageList__image",
 		template: _.template(ImageListTemplate),
 
+		events: {
+			'click .gallery__imageList__image': 'like'
+		},
+
 		render: function () {
 			this.$el.html(this.template(this.model.toJSON()));
 			return this;
-		},
+		}
 	});
 
 });

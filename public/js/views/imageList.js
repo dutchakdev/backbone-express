@@ -39,7 +39,7 @@ define([
 		},
 
 		like: function(event){
-			console.log(this);
+			// console.log(this.model.like());
 			this.animateLike(event);
 		},
 

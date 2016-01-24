@@ -7,10 +7,10 @@ config.express = {
 };
 
 config.mysql = {
-	"development": {
+	"prod": {
 		"username": "root",
 		"password": "test",
-		"database": "macpawgram",
+		"database": "wallpapers",
 		"host": "127.0.0.1"
 	}
 }

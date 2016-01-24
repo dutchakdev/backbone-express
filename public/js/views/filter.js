@@ -8,8 +8,8 @@ define([
 
 	return Backbone.View.extend({
 		tagName: "div",
-		className: "gallery__imageList__image",
-		template: _.template(ImageListTemplate),
+		className: "gallery__filters",
+		template: _.template(FiltersTemplate),
 
 		render: function () {
 			this.$el.html(this.template(this.model.toJSON()));

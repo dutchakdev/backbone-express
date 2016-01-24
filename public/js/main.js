@@ -20,6 +20,7 @@ require.config({
 		'jquery': '/vendors/jquery/dist/jquery',
 		'ev-emitter': '/vendors/ev-emitter',
 		'bootstrap': '/vendors/bootstrap/dist/js/bootstrap',
+		'async': '/vendors/async/dist/async',
 		'bootstrap/dropdown': '/vendors/bootstrap/js/dropdown',
 		'masonry': '/vendors/masonry/dist/masonry.pkgd',
 		'imagesloaded': '/vendors/imagesloaded/imagesloaded',
@@ -35,7 +36,11 @@ require([
 	'bootstrap/dropdown',
 ], function(Backbone, AppView, Router, dropdown) {
 	'use strict';
+	// Так как из bootstrap нам нужен только dropdown
+	// то сразу тут его и вызовем.
 	$('.dropdown-toggle').dropdown()
+
+	// Инициализация роутера и
 	new Router()
 	Backbone.history.start();
 	new AppView;

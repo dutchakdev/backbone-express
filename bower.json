@@ -26,6 +26,7 @@
     "bootstrap": "~3.3.6",
     "backbone-amd": "latest",
     "underscore-amd": "latest",
-    "text": "requirejs-text#~2.0.14"
+    "text": "requirejs-text#~2.0.14",
+    "async": "~1.5.2"
   }
 }

@@ -39,6 +39,7 @@ define([
 		},
 
 		like: function(event){
+			console.log(this);
 			this.animateLike(event);
 		},
 

@@ -2,26 +2,24 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
+	'async',
 	'masonry',
 	'imagesloaded',
 	'views/imageList',
+	'views/filter',
 	'collections/images',
+	'collections/categories',
 	'common',
-	'text!templates/filters.html',
-], function($, _, Backbone, Masonry, imagesLoaded, ImageListView, Images, Common, Filters) {
+], function($, _, Backbone, async, Masonry, imagesLoaded, ImageListView, FilterView, Images, Categories, Common) {
 	'use strict';
 
 	var App = Backbone.View.extend({
 		el: Common.GALLERY_SELECTOR,
 
 		initialize: function() {
-			var mainView = this;
 			// Делаем запрос к api, получаем список картинок
-			Images.fetch();
-			Images.on('sync', function () {
-				mainView.initGrid();
-				mainView.render();
-			})
+			this.initGrid();
+			this.render();
 		},
 
 		initGrid: function() {
@@ -40,22 +38,47 @@ define([
 		*	Master-ренденринг.
 		**/
 		render: function() {
-			this.$el.trigger(Common.EVENT_BEFORE_RENDER);
-			this.$el.append(Filters);
-			this.renderImageList(Images);
-			this.$el.trigger(Common.EVENT_AFTER_RENDER);
+			self = this;
+			self.$el.trigger(Common.EVENT_BEFORE_RENDER);
+			async.waterfall([
+				function(cb) {
+					self.renderFilters(Categories, cb);
+				},
+				function(cb) {
+					self.renderImageList(Images, cb);
+				},
+			], function(err){
+				// end async
+				self.$el.trigger(Common.EVENT_AFTER_RENDER);
+			});
 		},
 
 		/**
 		*	Рендеринг списка изображений
 		**/
-		renderImageList: function(Images) {
-			var imageListView = new ImageListView({
-				model: Images,
+		renderImageList: function(Images, callback) {
+			var self = this;
+			Images.fetch();
+			Images.on('sync', function () {
+				var imageListView = new ImageListView({
+					model: Images,
+				});
+				self.$el.append(imageListView.render().el);
+				callback(null);
 			});
-			// $el передаем в render, нужен для отслежки событий в основном контейнере
-			this.$el.append(imageListView.render().el);
 		},
+
+		renderFilters: function(Categories, callback) {
+			var self = this;
+			Categories.fetch()
+			Categories.on('sync', function () {
+				var filterView = new FilterView({
+					model: Categories
+				});
+				self.$el.append(filterView.render().el);
+				callback(null);
+			});
+		}
 
 	});
 

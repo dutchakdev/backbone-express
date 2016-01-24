@@ -14,7 +14,7 @@ define([
 			file: Common.PLACEHOLDER,
 			tags: '',
 			category: null,
-			likes: 0,
+			rating: 0,
 			rating: 0,
 			imageUrl: null
 		},

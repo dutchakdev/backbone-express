@@ -17,7 +17,7 @@ define([
 		template: _.template(ImagesTemplate),
 
 		events: {
-			'click .gallery__imageList__image': 'animateLike'
+			'click .gallery__imageList__image': 'like'
 		},
 
 		render: function () {
@@ -36,6 +36,10 @@ define([
 				model: item
 			});
 			this.$el.append(imageView.render().el);
+		},
+
+		like: function(event){
+			this.animateLike(event);
 		},
 
 		animateLike: function (event) {

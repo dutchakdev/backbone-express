@@ -6,8 +6,9 @@ define([
 	'imagesloaded',
 	'views/imageList',
 	'collections/images',
-	'common'
-], function($, _, Backbone, Masonry, imagesLoaded, ImageListView, Images, Common) {
+	'common',
+	'text!templates/filters.html',
+], function($, _, Backbone, Masonry, imagesLoaded, ImageListView, Images, Common, Filters) {
 	'use strict';
 
 	var App = Backbone.View.extend({
@@ -40,6 +41,7 @@ define([
 		**/
 		render: function() {
 			this.$el.trigger(Common.EVENT_BEFORE_RENDER);
+			this.$el.append(Filters);
 			this.renderImageList(Images);
 			this.$el.trigger(Common.EVENT_AFTER_RENDER);
 		},

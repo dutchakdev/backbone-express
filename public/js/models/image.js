@@ -1,7 +1,7 @@
 define([
 	'underscore',
 	'backbone',
-	'common',
+	'common'
 ], function(_, Backbone, Common) {
 	'use strict';
 
@@ -9,7 +9,7 @@ define([
 		initialize: function (){
 			this.imageUrl();
 		},
-		
+
 		defaults: {
 			file: Common.PLACEHOLDER,
 			tags: '',
@@ -20,17 +20,8 @@ define([
 
 		imageUrl: function() {
 			this.set('imageUrl', Common.UPLOADS_PATH + this.get('file'));
-		},
-
-		like: function (callback) {
-			Backbone.sync('create', new Backbone.Model({
-				objectType: 'image',
-				id: this.get('id')
-			}), {
-				url: Common.API_POST_LIKE,
-				success: callback
-			});
 		}
+		
 	});
 
 	return Images;

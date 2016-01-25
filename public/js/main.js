@@ -13,6 +13,10 @@ require.config({
 		'bootstrap/dropdown': {
 			deps: ['jquery'],
 			exports: '$.fn.dropdown'
+		},
+		'bootstrap-select': {
+			deps: ['jquery', 'bootstrap/dropdown'],
+			exports: '$.fn.selectpicker'
 		}
 	},
 	paths: {
@@ -20,6 +24,7 @@ require.config({
 		'jquery': '/vendors/jquery/dist/jquery',
 		'ev-emitter': '/vendors/ev-emitter',
 		'bootstrap': '/vendors/bootstrap/dist/js/bootstrap',
+		'bootstrap-select': '/vendors/bootstrap-select/dist/js/bootstrap-select',
 		'async': '/vendors/async/dist/async',
 		'bootstrap/dropdown': '/vendors/bootstrap/js/dropdown',
 		'masonry': '/vendors/masonry/dist/masonry.pkgd',
@@ -33,14 +38,8 @@ require([
 	'backbone',
 	'views/app',
 	'routers/router',
-	'bootstrap/dropdown',
-], function(Backbone, AppView, Router, dropdown) {
+], function(Backbone, AppView, Router) {
 	'use strict';
-	// Так как из bootstrap нам нужен только dropdown
-	// то сразу тут его и вызовем.
-	/*jshint unused:false*/
-	$('.dropdown-toggle').dropdown();
-
 	// JSHnint fix no-new
 	(function(){
 		return new Router();

@@ -15,6 +15,7 @@ define([
 		},
 
 		initialize: function () {
+			// Определяем зависимость изменений в модели
 			this.listenTo(this.model, 'change sync', this.render);
 		},
 

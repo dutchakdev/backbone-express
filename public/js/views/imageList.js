@@ -14,6 +14,10 @@ define([
 		className: 'gallery__imageList',
 		template: _.template(ImagesTemplate),
 
+		initialize: function () {
+			this.listenTo(this.model, 'change sync', this.render);
+		},
+
 		render: function () {
 			this.$el.html('');
 			this.$el.addClass('grid');

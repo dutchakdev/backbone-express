@@ -16,15 +16,14 @@ define([
 
 	var App = Backbone.View.extend({
 		el: Common.GALLERY_SELECTOR,
-		
+
 		initialize: function() {
 			// Делаем запрос к api, получаем список картинок
 			this.initGrid();
 			this.render();
 		},
-
 		initGrid: function() {
-			$(this.$el).on(Common.EVENT_AFTER_RENDER, function(){
+			$(this.$el).on(Common.EVENT_AFTER, function(){
 				imagesLoaded($('.gallery__imageList__image'), function() {
 					return new Masonry('.gallery__imageList', {
 						itemSelector: '.gallery__imageList__image',
@@ -40,7 +39,7 @@ define([
 		**/
 		render: function() {
 			self = this;
-			self.$el.trigger(Common.EVENT_BEFORE_RENDER);
+			self.$el.trigger(Common.EVENT_BEFORE);
 			async.waterfall([
 				function(cb) {
 					self.renderFilters(Categories, cb);
@@ -51,7 +50,7 @@ define([
 			], function(err){
 				if (err) throw err;
 				// end async
-				self.$el.trigger(Common.EVENT_AFTER_RENDER);
+				self.$el.trigger(Common.EVENT_AFTER);
 			});
 		},
 
@@ -61,7 +60,9 @@ define([
 		renderImageList: function(Images, callback) {
 			var self = this;
 			Images.fetch();
+
 			Images.on('sync', function () {
+				self.$el.find('.gallery__imageList').remove();
 				var imageListView = new ImageListView({
 					model: Images,
 				});

@@ -16,7 +16,7 @@ define([], function () {
 		GALLERY_SELECTOR: '#gallery',
 		GALLERY_IMAGE_LIST: '.gallery__imageList__image',
 
-		EVENT_BEFORE_RENDER: 'before',
-		EVENT_AFTER_RENDER: 'after'
+		EVENT_BEFORE: 'before',
+		EVENT_AFTER: 'after'
 	};
 });

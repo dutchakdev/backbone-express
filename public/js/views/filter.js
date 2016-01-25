@@ -32,8 +32,13 @@ define([
 					size: 4
 				});
 			});
+			this.renderCategoryFilter();
 		},
 
+		renderCategoryFilter: function () {
+
+		},
+		
 		render: function () {
 			this.$el.html(this.template(this.model.toJSON()));
 			this.$el.trigger('rendered');

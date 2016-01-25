@@ -38,7 +38,7 @@ header .header__logo {
 	padding: 5px;
 	margin: 10px auto 0 auto;
 	width: 98%;
-	width: 100%;
+	height: 35px;
 	text-align: center;
 }
 
@@ -101,6 +101,15 @@ header .header__logo {
 	box-shadow: 0 0 0 0;
 }
 
+#gallery .gallery__filters__filter {
+	margin: 0 auto;
+}
+#gallery .gallery__filters__filter-category {
+	float: left;
+}
+#gallery .gallery__filters__filter-tags {
+	float: right;
+}
 /* ---- grid ---- */
 
 .grid {

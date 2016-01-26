@@ -1,12 +1,12 @@
 #!/usr/bin/env node
-var app = require("./index");
-var config = require("app/config");
-console.info("server process starting");
+var app = require('./index');
+var config = require(__base + 'config');
+console.info('server process starting');
 app.listen(config.express.port, config.express.ip, function (error) {
 	if (error) {
-		console.error("Unable to listen for connections", error);
+		console.error('Unable to listen for connections', error);
 		process.exit(10);
 	}
-	console.info("express is listening on http://" +
-		config.express.ip + ":" + config.express.port);
+	console.info('express is listening on http://' +
+		config.express.ip + ':' + config.express.port);
 });

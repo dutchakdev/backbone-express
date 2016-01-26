@@ -1,0 +1,17 @@
+{
+	"prod": {
+		"driver": "mysql",
+		"user": "root",
+		"password": "test",
+		"database": "wallpapers",
+		"host": "127.0.0.1",
+		"logging": false
+	},
+	"dev": {
+		"driver": "mysql",
+		"user": "root",
+		"password": "test",
+		"database": "wallpapers",
+		"host": "127.0.0.1"
+	}
+}

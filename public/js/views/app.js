@@ -15,31 +15,27 @@ define([
 	'use strict';
 
 	var App = Backbone.View.extend({
-		el: Common.GALLERY_SELECTOR,
+		el: '#content__gallery',
 
 		initialize: function() {
-			// Делаем запрос к api, получаем список картинок
-			this.initGrid();
-			this.render();
-		},
-		initGrid: function() {
-			$(this.$el).on(Common.EVENT_AFTER, function(){
-				imagesLoaded($('.gallery__imageList__image'), function() {
-					return new Masonry('.gallery__imageList', {
-						itemSelector: '.gallery__imageList__image',
-						percentPosition: true,
-						columnWidth: 0
-					});
-				});
+			self = this;
+			Common.$loader.show();
+			self.$el.trigger(Common.EVENT_BEFORE);
+			self.render(function(){
+				Common.$loader.hide();
+				self.$el.trigger(Common.EVENT_AFTER);
 			});
 		},
 
 		/**
-		*	Master-ренденринг.
-		**/
-		render: function() {
-			self = this;
-			self.$el.trigger(Common.EVENT_BEFORE);
+		 * Master-ренденринг.
+		 *
+		 * @param
+		 * @returns
+		 */
+		render: function(callback) {
+			var self = this;
+			self.$el.html('');
 			async.waterfall([
 				function(cb) {
 					self.renderFilters(Categories, cb);
@@ -47,30 +43,50 @@ define([
 				function(cb) {
 					self.renderImageList(Images, cb);
 				},
-			], function(err){
-				if (err) throw err;
-				// end async
-				self.$el.trigger(Common.EVENT_AFTER);
+				self.applyGrid
+			],callback);
+		},
+
+		/**
+		 * Подключаем плагин для плитки
+		 *
+		 * @param event
+		 * @param cb - Коллбек
+		 * @returns {void}
+		 */
+		applyGrid: function (cb) {
+			imagesLoaded($('.content__gallery__imageList__image'), function() {
+				var $grid = new Masonry('.content__gallery__imageList', {
+					itemSelector: '.content__gallery__imageList__image',
+					percentPosition: true,
+					columnWidth: '.content__gallery__imageList__image'
+				});
+				cb(null, $grid);
 			});
 		},
 
 		/**
-		*	Рендеринг списка изображений
-		**/
+		 * Рендеринг списка изображений
+		 *
+		 * @param
+		 * @returns
+		 */
 		renderImageList: function(Images, callback) {
-			var self = this;
-			Images.fetch();
-
-			Images.on('sync', function () {
-				self.$el.find('.gallery__imageList').remove();
-				var imageListView = new ImageListView({
-					model: Images,
-				});
-				self.$el.append(imageListView.render().el);
+			var imageListView = new ImageListView({
+				model: Images,
+			});
+			this.$el.append(imageListView.render().el);
+			imageListView.$el.on('rendered', function(){
 				callback(null);
 			});
 		},
 
+		/**
+		 * Рендеринг фильтров
+		 *
+		 * @param
+		 * @returns
+		 */
 		renderFilters: function(Categories, callback) {
 			var self = this;
 			Categories.fetch();

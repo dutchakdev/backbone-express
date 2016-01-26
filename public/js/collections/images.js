@@ -9,7 +9,18 @@ define([
 
 	var ImagesCollection = Backbone.Collection.extend({
 		model: Images,
-		url: Common.API_GET_IMAGES
+		url: Common.API_GET_IMAGES,
+
+		/**
+		 * Переопределим fetch и повесим событие для индикатора загрузки
+		 *
+		 * @param
+		 * @returns
+		 */
+		fetch: function (options) {
+			this.trigger('fetch', this, options);
+			return Backbone.Collection.prototype.fetch.call(this, options);
+		}
 	});
 
 	return new ImagesCollection();

@@ -2,7 +2,7 @@ var express = require("express");
 var join = require("path").join;
 var router = new express.Router();
 
-router.get("/images", function (req, res) {
+router.get("/images", function (req, res, next) {
 	var images = [
 		{id: 1, file: 'stock-photo-130918089.jpg', category: 1, tags: 'tree,water', rating: 1230},
 		{id: 2, file: 'stock-photo-130918371.jpg', category: 2, tags: 'girl,brunette,stockings', rating: 10},
@@ -26,8 +26,10 @@ router.get("/images", function (req, res) {
 		{id: 20, file: 'stock-photo-130963067.jpg', category: 2, tags: 'blacknwhite,gray,face,girl,cute', rating: 1120},
 		{id: 21, file: 'stock-photo-130974685.jpg', category: 1, tags: 'tunnel,leaf,fall', rating: 210},
 	];
-
-	res.json(images);
+	setTimeout(function (){
+		res.json(images);
+		next();
+	}, 1000);
 });
 
 module.exports = router;

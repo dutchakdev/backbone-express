@@ -41,10 +41,10 @@ require([
 ], function(Backbone, AppView, Router) {
 	'use strict';
 	// JSHnint fix no-new
-	(function(){
-		return new Router();
-	})();
-	Backbone.history.start();
+	// (function(){
+	// 	return new Router();
+	// })();
+	// Backbone.history.start();
 	// JSHnint fix no-new
 	(function(){
 		return new AppView();

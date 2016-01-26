@@ -21,7 +21,7 @@ define([
 		imageUrl: function() {
 			this.set('imageUrl', Common.UPLOADS_PATH + this.get('file'));
 		}
-		
+
 	});
 
 	return Images;

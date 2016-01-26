@@ -8,7 +8,7 @@ define([
 
 	return Backbone.View.extend({
 		tagName: 'div',
-		className: 'gallery__imageList__image__info',
+		className: 'content__gallery__imageList__image__info',
 		template: _.template(InfoTemplate),
 		events: {
 			'click': 'like'
@@ -21,8 +21,11 @@ define([
 
 		/**
 		 * Вызов метода like из модели + анимация
+		 *
+		 * @param event
+		 * @returns {void}
 		 */
-		like: function(event){
+		like: function(){
 			self = this;
 			self.model.like(function(){
 				$(self.$el).trigger('like');

@@ -10,14 +10,19 @@ define([
 
 	return Backbone.View.extend({
 		tagName: 'div',
-		className: 'gallery__imageList__image',
+		className: 'content__gallery__imageList__image',
 		template: _.template(ImageListTemplate),
 		events: {
 			'like': 'animateLike'
 		},
 
+		/**
+		 * Master-рендеринг
+		 * 
+		 */
 		render: function () {
 			this.$el.html(this.template(this.model.toJSON()));
+			this.$el.addClass('col-sm-6 col-md-4');
 			this.renderInfo();
 			return this;
 		},

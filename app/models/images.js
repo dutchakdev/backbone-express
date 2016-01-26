@@ -38,13 +38,17 @@ module.exports = function(sequelize, DataTypes) {
 			},
 
 			stringToSearchQuery: function (string) {
-				var words = string.match(/[a-z0-9]+/gi);
-				var likeWords = words.map(function(item){
-					return {$like: '%' + item + '%'};
-				});
-				return {
-					$or: likeWords
-				};
+				var words = string.match(/[\w\u0430-\u044f0-9]+/gi);
+				if (words) {
+					var likeWords = words.map(function(item){
+						return {$like: '%' + item + '%'};
+					});
+					return {
+						$or: likeWords
+					};
+				} else {
+					return {};
+				}
 			},
 
 			categoryQuery: function (str) {

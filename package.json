@@ -2,6 +2,9 @@
   "name": "macpaw-test",
   "version": "0.0.1",
   "description": "Test task for Full-Stack Developer",
+  "engines": {
+    "node": "4.1.1"
+  },
   "scripts": {
     "start": "./app/server.js",
     "install": "bin/install.sh",

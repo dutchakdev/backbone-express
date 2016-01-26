@@ -1,4 +1,4 @@
-##### Первий запуск
+##### Первий запуск [![Build Status](https://travis-ci.org/dutchakdev/backbone-express.svg?branch=master)](https://travis-ci.org/dutchakdev/backbone-express)
 
 Для первого запуска проекта нужно запустить bash скрипт, который поставит все пакеты, импортирует sql файл для тестового задания и выполнит миграции. Для первого запуска нужно добавить параметр `import`
 

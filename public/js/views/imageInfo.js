@@ -27,8 +27,9 @@ define([
 		 */
 		like: function(){
 			self = this;
+			self.$el.trigger('like');
 			self.model.like(function(){
-				self.$el.trigger('like');
+				//
 			});
 		},
 

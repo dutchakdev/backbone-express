@@ -4,7 +4,7 @@
   "description": "Test task for Full-Stack Developer",
   "scripts": {
     "start": "./app/server.js",
-    "install": "bin/build.sh",
+    "install": "bin/install.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Roman Dutchak",

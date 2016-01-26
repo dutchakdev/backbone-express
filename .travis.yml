@@ -1,6 +1,6 @@
 # .travis.yml
 language: node_js
 node_js:
-	- "stable"
+  - "stable"
 sudo: false
 script: npm test

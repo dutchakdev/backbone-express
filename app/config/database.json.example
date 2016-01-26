@@ -1,10 +1,10 @@
 {
 	"prod": {
 		"driver": "mysql",
-		"user": "nay7uj1tyumrquir",
-		"password": "xag8692lz01lcpry",
-		"database": "caubz4rup387pebz",
-		"host": "uf63wl4z2daq9dbb.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
+		"user": "root",
+		"password": "test",
+		"database": "wallpapers",
+		"host": "127.0.0.1",
 		"logging": false
 	},
 	"dev": {

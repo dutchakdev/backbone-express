@@ -18,7 +18,7 @@ define([
 
 		/**
 		 * Master-рендеринг
-		 * 
+		 *
 		 */
 		render: function () {
 			this.$el.html(this.template(this.model.toJSON()));
@@ -27,6 +27,9 @@ define([
 			return this;
 		},
 
+		/**
+		 * Рендеринг
+		 */
 		renderInfo: function () {
 			var model = new Like.model();
 			model.set('id', this.model.get('id'));
@@ -36,7 +39,7 @@ define([
 			});
 			this.$el.append(imageInfoView.render().el);
 		},
-
+		
 		animateLike: function (event) {
 			var $target = $(event.currentTarget);
 			var rand = Math.floor((Math.random()*100)+1);

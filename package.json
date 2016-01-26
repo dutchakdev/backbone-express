@@ -21,6 +21,8 @@
     "forms": "^1.1.4",
     "jade": "^1.11.0",
     "masonry-layout": "^4.0.0",
+    "mysql-model": "0.0.2",
+    "sequelize": "^3.18.0",
     "xtend": "^4.0.1"
   }
 }

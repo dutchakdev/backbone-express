@@ -15,9 +15,9 @@ exports.setup = function(options, seedLink) {
 };
 
 exports.up = function(db, callback) {
-  db.addColumn('images', 'likes', {type: 'int', defaultValue: 0}, callback);
+  db.addColumn('images', 'rating', {type: 'int', defaultValue: 0}, callback);
 };
 
 exports.down = function(db, callback) {
-  db.removeColumn('images', 'likes', callback);
+  db.removeColumn('images', 'rating', callback);
 };

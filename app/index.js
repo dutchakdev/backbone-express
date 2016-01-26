@@ -7,7 +7,6 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// app.use(require("app/routes/site"));
 app.use('/api/v1', require('app/routes/images'));
 app.use('/api/v1', require('app/routes/likes'));
 app.use('/api/v1', require('app/routes/categories'));

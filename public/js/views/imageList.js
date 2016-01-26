@@ -27,9 +27,6 @@ define([
 			Images.on('fetch', function() {
 				Common.$loader.show();
 			}, this);
-			this.listenTo(this.model, 'sync', function(){
-				Common.$loader.hide();
-			});
 		},
 
 		render: function () {

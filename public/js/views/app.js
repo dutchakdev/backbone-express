@@ -19,10 +19,8 @@ define([
 
 		initialize: function() {
 			self = this;
-			Common.$loader.show();
 			self.$el.trigger(Common.EVENT_BEFORE);
 			self.render(function(){
-				Common.$loader.hide();
 				self.$el.trigger(Common.EVENT_AFTER);
 			});
 		},
@@ -36,6 +34,7 @@ define([
 		render: function(callback) {
 			var self = this;
 			self.$el.html('');
+			Common.$loader.show();
 			async.waterfall([
 				function(cb) {
 					self.renderFilters(Categories, cb);
@@ -61,6 +60,7 @@ define([
 					percentPosition: true,
 					columnWidth: '.content__gallery__imageList__image'
 				});
+				Common.$loader.hide();
 				cb(null, $grid);
 			});
 		},

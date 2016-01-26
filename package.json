@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "description": "Test task for Full-Stack Developer",
   "engines": {
-    "node": "4.1.1"
+    "node": "4.1.1",
+    "npm": "2.11.3"
   },
   "scripts": {
     "start": "./app/server.js",
@@ -16,6 +17,7 @@
     "body-parser": "^1.14.2",
     "bower": "^1.7.2",
     "bower-requirejs": "^1.2.0",
+    "connect": "^3.4.1",
     "cookie-parser": "^1.4.1",
     "csurf": "^1.8.3",
     "db-migrate": "^0.10.0-beta.7",
@@ -25,8 +27,11 @@
     "forms": "^1.1.4",
     "jade": "^1.11.0",
     "masonry-layout": "^4.0.0",
+    "mysql": "^2.10.2",
     "mysql-model": "0.0.2",
     "sequelize": "^3.18.0",
+    "sequelize-mysql": "^1.7.0",
+    "serve-static": "^1.10.2",
     "xtend": "^4.0.1"
   }
 }

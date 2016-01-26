@@ -1,9 +1,23 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
+var serveStatic = require('serve-static')
 var app = express();
 global.__base = __dirname + '/';
-app.use(express.static(path.join(__dirname, '../public')));
+
+app.use(serveStatic(path.join(__dirname, '../public/uploads'), {
+	maxAge: '1d',
+	setHeaders: function (res, path) {
+		if (serveStatic.mime.lookup(path) === 'text/html') {
+			res.setHeader('Cache-Control', 'public, max-age=0');
+		}
+	}
+}));
+
+app.use(serveStatic(path.join(__dirname, '../public'), {
+	'index': ['index.html']
+}));
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
